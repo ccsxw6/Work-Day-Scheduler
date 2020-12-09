@@ -9,3 +9,13 @@
 // THEN the text for that event is saved in local storage
 // WHEN I refresh the page
 // THEN the saved events persist
+
+$(document).ready(function() {
+    // Displays current day in current day id 
+    function displayTime() {
+        var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+        $("#currentDay").html(time) 
+        setTimeout(displayTime, 1000);// keeps seconds!
+    }
+    displayTime()
+})
