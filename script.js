@@ -1,63 +1,38 @@
-// WHEN I view the time blocks for that day
-// THEN each time block is color-coded to indicate whether it is in the past, present, or future
-// WHEN I click into a time block
-// THEN I can enter an event
-// WHEN I click the save button for that time block
-// THEN the text for that event is saved in local storage
-// WHEN I refresh the page
-// THEN the saved events persist
-
-var currentTime = moment().format('MMMM Do YYYY'); //('MMMM Do YYYY, h:mm:ss a'); for seconds. Wasn't working at home????
-
 $(document).ready(function() {
+    var events = [] //wouldn't have thought of this
 
-    var events = [];
-  
-    // listen for save button clicks
-    $(".saveBtn").on("click", function() {
-      // get nearby values
-      var value = $(this).siblings(".description").val();
-      var time = $(this).parent().attr("id");
-      var dateAdded = moment().format("dddd, MMMM Do");
-  
-      console.log(value)
-      events.push({description: value, time: time, date: dateAdded});
-  
-      // save the value in localStorage as time
-      localStorage.setItem("events", JSON.stringify(events));
-      
-    });
     
-    // Displays current day in current day id 
     function displayTime() {
+        var currentTime = moment().format('MMMM Do YYYY, h:mm:ss a');
         $("#currentDay").html(currentTime) 
         setTimeout(displayTime, 1000);
     }
-    displayTime()
-})
+    displayTime() 
 
-    function updateHour() {
-        var currentHour = moment().hour(); //gives currenthour
+
+    $(".saveBtn").on("click", function() {
+        // get nearby values
+        var value = $(this).siblings(".description").val();
+        var time = $(this).parent().attr("id"); // parent of savebtn is div w/ id in it saying the hour
+        var dateAdded = moment().format("dddd, MMMM Do"); //sets date user hit enter to dateAdded
+
+        events.push({description: value, time: time, date: dateAdded});
+
+        // save the value in localStorage as time
+        localStorage.setItem("events", JSON.stringify(events));//turn object into string, setting it in local storage
         
-        $(".time-block").each(function() {
-            var blockHour = parseInt($(this).attr("id").split("-")[1]); //WHAT THE HECK IS THIS!!!!!
+    });
 
-
-            console.log(this)
-
-            if (currentHour > blockHour) {
-                $(this).addClass("past");
-            }
+  //set styling to hours
+      $(".time-block").each(function() {
+      var blockHour = parseInt($(this).attr("id").split("-")[1]);
+      //.attr sets and returns
+      //how does [1] work? I know it logs 9 10 11 12 up to 17
+      //grabbing time-block, then returning id of time-blcok, an example is "hour-9"
+      //then splitting hour-9
+      //is [1] returning [1] of hour-9? , so hour = [0], and 9 = [1]?
+      //parses that into an integer
+      //does "-" take not use - in hour-9? 
+      console.log(blockHour)
+      })
     })
-    updateHour()
-
-
-
-    // if (currentTime) { //if the current time is the current time, then set time-block class to .future
-    //     var newColor = $(".time-block").addClass("future") //setting class to css style
-    //     $(".container").append(newColor)
-    // }
-
-
-
-}
