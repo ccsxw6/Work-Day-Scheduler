@@ -7,9 +7,26 @@
 // WHEN I refresh the page
 // THEN the saved events persist
 
-var currentTime = moment().format('MMMM Do YYYY, h:mm:ss a');
+var currentTime = moment().format('MMMM Do YYYY'); //('MMMM Do YYYY, h:mm:ss a'); for seconds. Wasn't working at home????
 
 $(document).ready(function() {
+
+    var events = [];
+  
+    // listen for save button clicks
+    $(".saveBtn").on("click", function() {
+      // get nearby values
+      var value = $(this).siblings(".description").val();
+      var time = $(this).parent().attr("id");
+      var dateAdded = moment().format("dddd, MMMM Do");
+  
+      console.log(value)
+      events.push({description: value, time: time, date: dateAdded});
+  
+      // save the value in localStorage as time
+      localStorage.setItem("events", JSON.stringify(events));
+      
+    });
     
     // Displays current day in current day id 
     function displayTime() {
@@ -17,18 +34,30 @@ $(document).ready(function() {
         setTimeout(displayTime, 1000);
     }
     displayTime()
-
-    if (currentTime) { //if the current time is the current time, then set time-block class to .future
-        var newColor = $(".time-block").addClass("future")
-        $(".container").append(newColor)
-    }
-
-    //color time blocks
-    //.present .future .past classes in css
-    //var to check if now is past, current, or future
-    // if rowTime = currentTime, then row time gets this styling
-    //else, if rowTime < currentTime, 
-    //else, if rowtime > currentTime, 
-    //OR set first row to c when time is 9am? 
-  
 })
+
+    function updateHour() {
+        var currentHour = moment().hour(); //gives currenthour
+        
+        $(".time-block").each(function() {
+            var blockHour = parseInt($(this).attr("id").split("-")[1]); //WHAT THE HECK IS THIS!!!!!
+
+
+            console.log(this)
+
+            if (currentHour > blockHour) {
+                $(this).addClass("past");
+            }
+    })
+    updateHour()
+
+
+
+    // if (currentTime) { //if the current time is the current time, then set time-block class to .future
+    //     var newColor = $(".time-block").addClass("future") //setting class to css style
+    //     $(".container").append(newColor)
+    // }
+
+
+
+}
