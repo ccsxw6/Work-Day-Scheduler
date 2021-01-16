@@ -1,7 +1,7 @@
 # Work-Day-Scheduler
 
 ## Project Description
-This is a project that allows the user to add work events on a calendar. It holds regular working hours, 9am to 5pm. You can save your event to local storage by clicking the save button on the right. Each row is colored depending on the time of day. 
+This is a project that allows the user to add events to a calendar. This calendar is made for the work day and holds regular working hours, 9am to 5pm. The user can save their event to local storage by clicking the save button on the right of each column. Each row is color coded depending on the time of day; grey corresponds to the past, red corresponds to the present, and green corresponds to the future. 
 
 ## Mock Up
 ![Page Image](Schedulerpic.PNG)
