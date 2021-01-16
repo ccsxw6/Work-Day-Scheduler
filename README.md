@@ -6,6 +6,9 @@ This is a project that allows the user to add work events on a calendar. It hold
 ## Mock Up
 ![Page Image](Schedulerpic.PNG)
 
+## Technologies Used
+HTML, CSS JavaScript, Moment.js
+
 ## Deployment
 
 https://ccsxw6.github.io/Work-Day-Scheduler/
