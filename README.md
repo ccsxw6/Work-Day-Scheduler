@@ -13,5 +13,6 @@ HTML, CSS JavaScript, Moment.js
 
 https://ccsxw6.github.io/Work-Day-Scheduler/
 
+[go](https://ccsxw6.github.io/Work-Day-Scheduler/){:target="_blank" rel="noopener"}
 
 
