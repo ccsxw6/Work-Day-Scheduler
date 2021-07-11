@@ -6,13 +6,16 @@ This is a project that allows the user to add events to a calendar. This calenda
 ## Mock Up
 ![Page Image](Schedulerpic.PNG)
 
-## Technologies Used
-HTML, CSS JavaScript, Moment.js
-
 ## Deployment
+Link to website:
+[Web App Link](https://ccsxw6.github.io/Work-Day-Scheduler/)
 
-https://ccsxw6.github.io/Work-Day-Scheduler/
+## Technologies Used
+- HTML
+- CSS (Bootstrap)
+- JavaScript
+- Moment.js
+- Local Storage
 
-[go](https://ccsxw6.github.io/Work-Day-Scheduler/){:target="_blank" rel="noopener"}
 
 
